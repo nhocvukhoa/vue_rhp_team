@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - v-on</title>
+</head>
+<body>
+    <div id="obj">
+        <h1>Ví dụ 1</h1>
+        <p>Click vào để tăng giá trị: {{ dem }}</p>
+        <p>{{ dem > 5 ? 'Bạn đã vượt quá giới hạn' : 'Bạn còn nằm trong giới hạn'}}</p>
+        <button v-on:click="increaseNumber">Click</button>
+        <hr>
+
+        <h1>Ví dụ 2</h1>
+        <button v-on:click="greet">Chào</button>
+        <hr>
+
+        <h1>Ví dụ 3</h1>
+        <button v-on:click="say('hi')">Say hi</button>
+        <hr>
+
+        <h1>Ví dụ 4</h1>
+        <p v-on:mouseover="calculator">Tọa độ của chuột: {{ x }} / {{ y }}</p>
+        <hr>
+
+        <h1>Ví dụ 5: thao tác với bàn phím với các phím như enter, tab, delete, ...</h1>
+        <input type="text" v-on:keyup.enter="keyboard">
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var example1 = new Vue({
+        el: "#obj",
+        data: {
+            dem: 0,
+            name: 'Anh Khoa',
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            increaseNumber: function () {
+                this.dem++;
+            },
+            greet: function (event) {
+                alert('Hello ' + this.name + '!');
+            },
+            say: function (messages) {
+                alert(messages);
+            },
+            calculator: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            keyboard: function () {
+                alert('hello');
+            }
+        }
+    });
+</script>
+</html>

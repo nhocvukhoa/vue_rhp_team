@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Detach và v-show</title>
+</head>
+<body>
+    <div id="app">
+        <p>Are you a doctor?</p>
+        <p v-if="xacdinh">Yes, I am <span>a doctor</span></p>
+        <p v-else>No, I am a student</p>
+        <button @click="xacdinh =! xacdinh">Change</button>
+
+        <template v-if="xacdinh">
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+        </template>
+
+        <p v-show="xacdinh">Test show element</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //nếu dùng if else thì "Test show element" có thể bị remove
+    //v-show là một trong những hàm detach, ko có tác dụng cho alternative(template) vì template ko phải một thẻ html
+    //sử dụng v-show khi chúng ta sử dụng thường xuyên ví dụ như đổi mật khẩu ta làm ẩn hiện mật khẩu
+    //sử dụng v-if nếu điều kiện ít khi thay đổi trong suốt vòng đời ứng dụng
+    new Vue ({
+        el: '#app',
+        data: {
+            xacdinh: true,
+        }
+    });
+</script>
+</html>

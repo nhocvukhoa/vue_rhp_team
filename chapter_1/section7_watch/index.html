@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - watch</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ diem }}</p>
+    </div>
+    <hr>
+    <div id="my-component">
+        <div>{{ message }}</div>
+        <button v-on:click="changeMessage">Click me</button>
+    </div>
+    <hr>
+    <div id="example">
+        <div>{{ reverseMessage }}</div>
+        <button v-on:click="changeMessage">Click me</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //watch: theo dõi sự thay đổi của biến để làm một hành động nào đó
+    var app = new Vue({
+        el: '#app',
+        data: {
+            diem: '7 diem'
+        },
+        watch: {
+            diem: function(newValue) {
+                alert('Điểm đã được thay đổi');
+            }
+        }
+    });
+
+    app.diem = '8 diem';
+
+    var myComponent = new Vue ({
+        el: '#my-component',
+        data: {
+            message: 'This is my first component using blinding data',
+        },
+        methods: {
+            changeMessage: function () {
+                this.message = 'This is new message'
+            },
+        },
+        watch : {
+            message: function (newValue) {
+                console.log('message changed');
+            }
+        }
+    });
+
+    var example = new Vue({
+        el: '#example',
+        data: {
+            message: '',
+        },
+        methods: {
+            changeMessage: function () {
+                this.message = 'this is new message'
+            }
+        },
+        computed: {
+            reverseMessage() {
+        		return this.message.split('').reverse().join('')
+        	}
+        },
+        watch: {
+            message: function () {
+                console.log('mark is changed');
+            }
+        }
+    });
+</script>
+</html>

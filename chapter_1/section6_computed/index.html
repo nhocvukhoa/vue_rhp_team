@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - computed</title>
+</head>
+<body>
+    <div id="app">
+        <p>Giá trị A là: {{ increaseA }}</p>
+        <p>Giá trị B là: {{ increaseB }}</p>
+        <p>Giá trị A là: {{ increaseA2() }}</p>
+        <p>Giá trị B là: {{ increaseB2() }}</p>
+        <button v-on:click="a++">Tăng A</button>
+        <button v-on:click="b++">Tăng B</button>
+    </div>
+    <hr>
+    <div id="example">
+        <p>Original message: {{ message }}</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+           a: 0,
+           b: 0,
+        },
+        computed: {
+            increaseA: function () {
+                console.log('computed');
+                return this.a;
+            },
+            increaseB: function () {
+                console.log('computed');
+                return this.b;
+            }
+        }, //computed sẽ chạy trước methods
+        methods: {
+            increaseA2: function () {
+                console.log('methods');
+                return this.a;
+            },
+            increaseB2: function () {
+                console.log('methods');
+                return this.b;
+            }
+        }
+    });
+
+    new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello'
+        },
+        computed: {
+            reversedMessage: function () {
+                return this.message.split('').reverse().join('');
+            }
+        }
+    });
+</script>
+</html>

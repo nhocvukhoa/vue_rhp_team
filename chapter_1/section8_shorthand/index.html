@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - shorthand</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="changeLink">Click to change link</button>
+        <a v-bind:href="link" target="_blank">Link</a>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //shorthand: thay vì dùng v-on:click có thể dùng @click
+    new Vue ({
+        el: '#app',
+        data: {
+            link: 'https://www.google.com/?gws_rd=ssl'
+        },
+        methods: {
+            changeLink: function() {
+                this.link = 'https://zingnews.vn/';
+            }
+        }
+    });
+</script>
+</html>

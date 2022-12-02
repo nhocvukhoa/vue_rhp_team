@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Tương tác với css thông qua class attribute</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .color {
+            display: flex;
+            align-items: center;
+        }
+
+        .text-color {
+            padding: 1rem 1rem;
+            font-size: 2rem;
+            border: 0;
+            border-radius: 3px;
+            background: #fff;
+            margin-right: 15px;
+        }
+
+        input[type="color"] {
+            width:40px;
+            border:1px solid black;
+            margin:0px;
+            padding:0px !important;
+            height:40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-bind:style="{ backgroundColor: color}">
+        <h1>Try a color</h1>
+        <div class="color">
+            <input type="text" class="text-color" maxlength="7" v-bind:style="{ color: color}" v-model="color">
+            <input type="color" v-model="color">
+        </div>
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            color: '#673AB7'
+        }
+    });
+</script>
+</html>

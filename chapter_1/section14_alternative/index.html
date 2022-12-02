@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Thuật ngữ alternative</title>
+</head>
+<body>
+    <div id="app">
+        <p>Are you a doctor?</p>
+        <p v-if="xacdinh">Yes, I am <span>a doctor</span></p>
+        <p v-else>No, I am a student</p>
+        <button @click="xacdinh =! xacdinh">Change</button>
+
+        <template v-if="xacdinh">
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+            <div>Menu 1</div>
+        </template>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //Có thể hiểu alternative là các cặp thẻ đặc biệt của vue, sẽ ko hiện ra trong html, là ưu điểm ko sinh code
+    new Vue ({
+        el: '#app',
+        data: {
+            xacdinh: true,
+        }
+    });
+</script>
+</html>

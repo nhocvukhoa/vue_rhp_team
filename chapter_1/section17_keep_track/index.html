@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Khả năng keep track của Vue</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(menu, index) in menus" :key="menu">{{ menu }} có index là : {{ index }}</li>
+        </ul>
+        <button @click="menus.push('test')">Add new item</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //Khi duyệt vòng lặp được 4 phần tử, vue sinh ra 4 cái unique key assign
+    //unique key   index 
+    //abcxya        0
+    //ấdasdad       1
+    new Vue ({
+        el: '#app',
+        data: {
+            menus: [
+                'Home',
+                'About',
+                'Blog',
+                'Contact'
+            ],
+        }
+    });
+</script>
+</html>

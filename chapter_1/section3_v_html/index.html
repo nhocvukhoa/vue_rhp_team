@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - v-html</title>
+</head>
+<body>
+    <div id="obj">
+        <p v-html="testHTML"></p>
+        <p v-once>{{ content}} - {{ showPost() }}</p>
+        <a v-bind:href="link" v-bind:title="title">Link bài viết nè</a>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //Tất cả dữ liệu để ở html đều ở dạng dữ liệu thô (text)
+    //Để render ra 1 đoạn mã html trong đối tượng ra html ta dùng v-html
+    new Vue({
+        el: "#obj",
+        data: {
+            title: 'Bài viết nè',
+            content: 'Hello mn :))',
+            link: 'https://www.facebook.com/nvanhkhoa148', //data truyền vô chỉ có tác dụng cho thẻ chứ ko tác dụng cho attribute thẻ nên sử dụng bind
+            testHTML: '<a href="https://www.facebook.com/nvanhkhoa148">Click</a>',
+        },
+        methods: {
+            showPost: function () {
+                this.content = 'Lại là mình đây';
+                return this.content;
+            }
+        }
+    });
+</script>
+</html>

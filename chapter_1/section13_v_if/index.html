@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Điều kiện trong Vue</title>
+</head>
+<body>
+    <div id="app">
+        <p>Are you a doctor?</p>
+        <p v-if="xacdinh">Yes, I am <span>a doctor</span></p>
+        <p v-else>No, I am a student</p>
+        <button @click="xacdinh =! xacdinh">Change</button>
+        <hr>
+
+        <p v-if="ok">Mọi việc đều ổn cả</p>
+        <p v-else>Có gì đó sai sai</p>
+        <template v-if="ok">
+            <p>Ơ này, Augustin thân mến ơi</p>
+            <p>Mọi việc đều như ý, như ý, như ý</p>
+        </template>
+        <button @click="ok =! ok">Change 2</button>
+        <hr>    
+        <div v-if="Math.random() > 0.5">Tài</div>
+        <div v-else>Xỉu</div>
+        <hr>
+
+        <h3>Khối lệnh if else của vue</h3>
+        <div v-if="type === 'A'">A</div>
+        <div v-else-if="type === 'B'">B</div>
+        <div v-else-if="type === 'C'">C</div>
+        <div v-else>Nhiều quá ko nhớ nổi</div>
+        <hr>
+
+        <h3>Lựa chọn kiểu đăng nhập</h3>
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input type="text" placeholder="Nhập username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input type="text" placeholder="Nhập địa chỉ email" key="email-input">
+        </template>
+        <button @click="loginType =! loginType">Change login type</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //v-else phải đi ngay sau v-if
+    new Vue ({
+        el: '#app',
+        data: {
+            xacdinh: true,
+            ok: true,
+            type: 'B',
+            loginType: 'username'
+        }
+    });
+</script>
+</html>

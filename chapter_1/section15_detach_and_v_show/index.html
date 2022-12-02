@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Duyệt vòng lặp với v-for</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(menu, i) in menus">{{ menu }} có index là: {{ i }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="student in students">
+                <a v-for="(value, key, index) in student">{{ key }} : {{ value }} ({{ index }})</a>
+            </li>
+        </ul>
+        <hr>
+        <h3>Looping through list of number</h3>
+        <p v-for="n in 10">{{ n }}</p>
+        <hr>
+        <template v-for="(menu, i) in menus">
+            <h3>{{ menu }}</h3>
+            <p>{{ i }}</p>
+        </template>
+        <hr>
+        <h3>Danh sách nước giải khát hiện có:</h3>
+        <ul>
+            <li v-for="(drink, index) in drinks">
+               {{ parentMessage }} - {{ index }} - {{ drink.name }}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //v-for có thể sử dụng trong alternative
+    new Vue ({
+        el: '#app',
+        data: {
+            menus: [
+                'Home',
+                'About',
+                'Blog',
+                'Contact'
+            ],
+            parentMessage: 'Parent',
+            drinks: [
+                {name: 'Bò húc'},
+                {name: 'Sting'},
+                {name: 'Coca'},
+            ],
+            students: [
+                {name: 'Khoa', age: 30},
+                {name: 'Khuê', age: 20},
+                {name: 'Anh', age: 50},
+            ]
+        }
+    });
+</script>
+</html>
