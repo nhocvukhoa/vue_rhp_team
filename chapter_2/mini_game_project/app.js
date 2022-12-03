@@ -6,10 +6,48 @@ new Vue ({
         gameIsRunning: false,
     },
     methods: {
-        startNewGame: function () {
+        startNewGame: function() {
             this.gameIsRunning = true;
             this.playerHealth = 100;
             this.monsterHealth = 100;
+        },
+        attack: function() {
+            //Check option 
+            if (this.checkPlayerOptions()) {
+                return;
+            };
+
+            //Monster 
+            this.monsterHealth -= this.inputDamage(4, 10);
+
+            //Player
+            this.playerHealth -= this.inputDamage(4, 10);        
+        },
+        inputDamage: function(minDamage, maxDamage) {
+            return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
+        },
+        checkPlayerOptions: function() {
+            if (this.monsterHealth <= 0) {
+                if (confirm('You won! New game?')) {
+                    this.startNewGame();
+                    //this.gameIsRunning = true;
+                } else {
+                    this.gameIsRunning = false;
+                }
+
+                return true;
+            } else if (this.playerHealth <= 0) {
+                if (confirm('You lost! New game?')) {
+                    this.startNewGame();
+                    //this.gameIsRunning = true;
+                } else {
+                    this.gameIsRunning = false;
+                }
+
+                return true;
+            }
+
+            return; //Không có 2 trường hợp này thì coi như ko chi xảy ra
         }
     }
 });
