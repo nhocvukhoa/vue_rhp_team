@@ -48,6 +48,10 @@ new Vue ({
             //Monster
             this.monsterAttack();
         },
+        giveUp: function() {
+            this.gameIsRunning = false;
+            alert('You lost!');
+        },
         inputDamage: function(minDamage, maxDamage) {
             return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
         },
