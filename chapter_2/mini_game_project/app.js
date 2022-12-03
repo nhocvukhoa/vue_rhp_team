@@ -35,6 +35,19 @@ new Vue ({
             //Monster đánh người chơi
             this.monsterAttack();
         },
+        heal: function() {
+            //Player
+            if (this.playerHealth > 70) {
+                return false;
+            } else if (this.playerHealth <= 60) {
+                this.playerHealth += 10;
+            } else {
+                this.playerHealth = 70;
+            }
+
+            //Monster
+            this.monsterAttack();
+        },
         inputDamage: function(minDamage, maxDamage) {
             return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
         },
