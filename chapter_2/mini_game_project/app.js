@@ -17,14 +17,29 @@ new Vue ({
                 return;
             };
 
-            //Monster 
+            //Người chơi đánh monster 
             this.monsterHealth -= this.inputDamage(4, 10);
+            
+            //Monster đánh người chơi
+            this.monsterAttack();
+        },
+        specialAttack: function() {
+            //Check option 
+            if (this.checkPlayerOptions()) {
+                return;
+            };
 
-            //Player
-            this.playerHealth -= this.inputDamage(4, 10);        
+            //Người chơi đánh monster 
+            this.monsterHealth -= this.inputDamage(10, 20);
+
+            //Monster đánh người chơi
+            this.monsterAttack();
         },
         inputDamage: function(minDamage, maxDamage) {
             return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
+        },
+        monsterAttack: function() {
+            this.playerHealth -= this.inputDamage(5, 12);
         },
         checkPlayerOptions: function() {
             if (this.monsterHealth <= 0) {
