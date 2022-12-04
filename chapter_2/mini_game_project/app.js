@@ -4,6 +4,7 @@ new Vue ({
         playerHealth: 100,
         monsterHealth: 100,
         gameIsRunning: false,
+        turns: [],
     },
     methods: {
         startNewGame: function() {
@@ -18,10 +19,18 @@ new Vue ({
             };
 
             //Người chơi đánh monster 
-            this.monsterHealth -= this.inputDamage(4, 10);
-            
+            var damage = this.inputDamage(4, 10);
+            this.monsterHealth -= damage;
+
+            this.turns.unshift({
+                isPlayerAttack: true,
+                textLog: 'Player attacks monster : ' + damage,
+            });
+
             //Monster đánh người chơi
             this.monsterAttack();
+
+            this.checkPlayerOptions();
         },
         specialAttack: function() {
             //Check option 
@@ -30,10 +39,18 @@ new Vue ({
             };
 
             //Người chơi đánh monster 
-            this.monsterHealth -= this.inputDamage(10, 20);
+            var damage = this.inputDamage(10, 20);
+            this.monsterHealth -= damage;
+
+            this.turns.unshift({
+                isPlayerAttack: true,
+                textLog: 'Player attacks monster : ' + damage,
+            });
 
             //Monster đánh người chơi
             this.monsterAttack();
+
+            this.checkPlayerOptions();
         },
         heal: function() {
             //Player
@@ -45,18 +62,32 @@ new Vue ({
                 this.playerHealth = 70;
             }
 
+            this.turns.unshift({
+                isPlayerAttack: true,
+                textLog: 'Player heals 10',
+            });
+
             //Monster
             this.monsterAttack();
         },
         giveUp: function() {
             this.gameIsRunning = false;
+            this.turns = [];
+            this.playerHealth = 100;
+            this.monsterHealth = 100;
             alert('You lost!');
         },
         inputDamage: function(minDamage, maxDamage) {
             return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
         },
         monsterAttack: function() {
-            this.playerHealth -= this.inputDamage(5, 12);
+            var damage = this.inputDamage(5, 12);
+            this.playerHealth -= damage;
+
+            this.turns.unshift({
+                isPlayerAttack: false,
+                textLog: 'Monster attacks player : ' + damage,
+            });
         },
         checkPlayerOptions: function() {
             if (this.monsterHealth <= 0) {

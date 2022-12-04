@@ -14,7 +14,8 @@
 
             <div class="healthbar">
                 <div class="healthbar text-center" style="background-color: red; margin: 0; color: white;"
-                  :style="{width: playerHealth + '%'}">
+                    :style="{width: playerHealth + '%'}">
+                    {{ playerHealth }}
                 </div>
             </div>
         </div>
@@ -24,7 +25,8 @@
             
             <div class="healthbar">
                 <div class="healthbar text-center" style="background-color: red; margin: 0; color: white;"
-                :style="{width: monsterHealth + '%'}">
+                    :style="{width: monsterHealth + '%'}">
+                    {{ monsterHealth }}
                 </div>
             </div>
         </div>
@@ -40,6 +42,15 @@
             <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
             <button id="heal" @click="heal">HEAL</button>
             <button id="give-up" @click="giveUp">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log" v-if="turns.length > 0">
+        <div class="small-12 columns">
+            <ul>
+                <li v-for="turn in turns" :class="{'player-turn': turn.isPlayerAttack, 'monster-turn': !turn.isPlayerAttack}">
+                    {{ turn.textLog }}
+                </li>
+            </ul>
         </div>
     </section>
 </div>
