@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Một vài điều cơ bản về VueJS Instance</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <h1>After computed: {{ lowerCaseTitle }}</h1>
+        <button @click="show">Show</button>
+        <p v-if="showParagraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate labore inventore harum ut voluptatum sint eaque, 
+            illum deleniti debitis vel distinctio aspernatur in modi illo neque reprehenderit possimus ex. Corrupti!</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //instance là đối lượng, app là đối tượng còn Vue là object
+    //khởi tạo một Vue instance gồm các thông tin: data(dữ liệu truyền vào), methods(phương thức xử lý)  
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: 'The Vue JS Instance',
+            showParagraph: false,
+        },
+        methods: {
+            show: function() {
+                this.showParagraph = true;
+                this.updateTitle('This Vue JS Instance (Updated)');
+            },
+            updateTitle: function(title) {
+                this.title = title;
+            }
+        },
+        computed: {
+            lowerCaseTitle: function() {
+                return this.title.toLowerCase();
+            }
+        },
+        watch: {
+            title: function(value) {
+                alert('Title changed, new value: ' + value);
+            }
+        }
+    });
+</script>
+</html>
