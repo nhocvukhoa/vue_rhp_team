@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Tìm hiểu kỹ về el và data</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <h1>After computed: {{ lowerCaseTitle }}</h1>
+        <button @click="show">Show</button>
+        <p v-if="showParagraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate labore inventore harum ut voluptatum sint eaque, 
+            illum deleniti debitis vel distinctio aspernatur in modi illo neque reprehenderit possimus ex. Corrupti!</p>
+    </div>
+
+    <div id="app2">
+        <h1>{{ title }}</h1>
+        <button @click="changeTitle">Change title in first instance</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var data = {
+        title: 'The Vue JS Instance',
+        showParagraph: false,
+    };
+
+    var app = new Vue({
+        el: '#app',
+        data: data,
+        methods: {
+            show: function() {
+                this.showParagraph = true;
+                this.updateTitle('This Vue JS Instance (Updated)');
+            },
+            updateTitle: function(title) {
+                this.title = title;
+            }
+        },
+        computed: {
+            lowerCaseTitle: function() {
+                return this.title.toLowerCase();
+            }
+        },
+        watch: {
+            title: function(value) {
+                alert('Title changed, new value: ' + value);
+            }
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            title: 'The Second instance'
+        },
+        methods: {
+            changeTitle: function() {
+                app.title = 'Changed!';
+            }
+        }
+    });
+
+    app2.newProp = 'Hello';
+    //console.log(app.$data === data);
+    console.log(app.$data.showParagraph);
+</script>
+</html>
