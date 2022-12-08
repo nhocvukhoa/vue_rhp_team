@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Lấy thông tin của một object bằng refs (trạng thái thông tin)</title>
+</head>
+<body>
+    <div id="app">
+        <h1 ref="infoTitle">{{ title }}</h1>
+        <h1>After computed: {{ lowerCaseTitle }}</h1>
+        <button @click="show" ref="infoButton">Show</button>
+        <p v-if="showParagraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate labore inventore harum ut voluptatum sint eaque, 
+            illum deleniti debitis vel distinctio aspernatur in modi illo neque reprehenderit possimus ex. Corrupti!</p>
+    </div>
+
+    <div id="app2">
+        <h1>{{ title }}</h1>
+        <button @click="changeTitle">Change title in first instance</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //ref là reference, dùng để xem thông tin của một object
+    //nếu gọi ref bên ngoài instance để thay đổi đối tượng thì sẽ ko có tác dụng, chỉ có tác dụng khi gọi bên trong instance
+    //nếu gọi ref của đối tượng chưa được xuất hiện trên html thì sẽ ko hoạt động
+    var data = {
+        title: 'The Vue JS Instance',
+        showParagraph: false,
+    };
+
+    var app = new Vue({
+        el: '#app',
+        data: data,
+        methods: {
+            show: function() {
+                this.showParagraph = true;
+                this.updateTitle('This Vue JS Instance (Updated)');
+                console.log(this.$refs);
+                this.$refs.infoButton.innerText = "Show after using refs"
+            },
+            updateTitle: function(title) {
+                this.title = title;
+            }
+        },
+        computed: {
+            lowerCaseTitle: function() {
+                return this.title.toLowerCase();
+            }
+        },
+        watch: {
+            title: function(value) {
+                alert('Title changed, new value: ' + value);
+            }
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            title: 'The Second instance'
+        },
+        methods: {
+            changeTitle: function() {
+                app.title = 'Changed!';
+            }
+        }
+    });
+
+    app2.newProp = 'Hello';
+    //console.log(app.$data === data);
+    console.log(app.$data.showParagraph);
+
+    app.$refs.infoTitle.innerText = 'Title after using hrefs';
+</script>
+</html>

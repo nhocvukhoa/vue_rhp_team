@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Vòng đời Vue</title>
+</head>
+<body>
+    <div id="app">
+        <h3>{{ title }}</h3>
+        <button @click="updateTitle">Update title</button>
+        <button @click="destroyEvent">Destroy</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Lifecycle Hooks'
+        },
+        //1. Giai đoạn khởi tạo
+        //data, event chưa được thiết lập nên log content ra undefined
+        beforeCreate: function() {
+            console.log('beforeCreate');
+            console.log(this.title);
+        },
+        //được chạy khi data, event đã được thiết lập thành công
+        created: function() {
+            console.log('created');
+            console.log(this.title);
+        },
+        //2. Giai đoạn gắn kết DOM
+        //chạy sau khi data, event được thiết lập và trước khi gắn vào DOM
+        //vẫn chưa truy cập được phần tử trong dom
+        beforeMount() {
+            console.log('beforeMount');
+            console.log(this.$el.textContent);
+        },
+        //truy cập vào phần tử trong DOM
+        mounted() {
+            console.log('mounted');
+            console.log(this.$el.textContent);
+        },
+        //3. Giai đoạn cập nhật DOM khi dữ liệu thay đổi
+        beforeUpdate() {
+            console.log('beforeUpdate');
+        },
+        updated() {
+            console.log('updated');
+        },
+        //4. Giai đoạn hủy instance
+        beforeDestroy () {
+           console.log('beforeDestroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        },
+        methods: {
+            updateTitle: function() {
+                app.title = 'Title updated';
+            },
+            destroyEvent: function() {
+                this.$destroy();
+            }
+        }
+    });
+</script>
+</html>
