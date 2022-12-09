@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Tìm hiểu về component thuở sơ khai</title>
+</head>
+<body>
+    <div id="app">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component('mycomponent', {
+        data: function () {
+            return {
+                test: 'aaaa'
+            }
+        },
+        template: '<h1>{{ test }}</h1>'
+    });
+
+    new Vue({ 
+        el: '#app' 
+    });
+</script>
+</html>
