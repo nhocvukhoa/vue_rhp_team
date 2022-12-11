@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Hai kiểu sử dụng dữ liệu qua Component</title>
+</head>
+<body>
+    <div id="app">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //kiểu đối tượng chứa properties được khai báo trực tiếp bên trong
+    Vue.component('mycomponent', {
+        data: function() {
+            return {
+                text: 'aaaaaa'
+            };
+        },
+        template: '<h1>{{ text }} </br><button @click="changeText">Change text</button></h1>',
+        methods: {
+            changeText: function() {
+                this.text = 'Changed';
+                console.log(this);
+            }
+        }
+    });
+
+    new Vue({ 
+        el: '#app' 
+    });
+</script>
+</html>

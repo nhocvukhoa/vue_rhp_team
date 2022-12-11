@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS - Đăng ký vùng hoạt động cho component</title>
+</head>
+<body>
+    <div id="app">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+    <hr>
+    <div id="app2">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //C1: sử dụng Vue.component
+    //C2: đặt tên như cpt chẳng hạn rồi ai muốn dùng thì phải đăng ký
+    var cpt = {
+        data: function () {
+            return {
+                text: 'aaaa'
+            }
+        },
+        template: '<h1>{{ text }}<br><button @click="changeText">Change text</button></h1>',
+        methods: {
+            changeText: function() {
+                this.text = 'Changed!';
+            }
+        }
+    };
+
+    new Vue({ 
+        el: '#app' ,
+        components: {
+            'mycomponent': cpt,
+        }
+    });
+
+    new Vue({
+        el: '#app2'
+    });
+</script>
+</html>
