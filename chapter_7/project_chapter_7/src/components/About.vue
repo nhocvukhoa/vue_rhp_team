@@ -13,8 +13,19 @@
                 counter: 0
             }
         },
+        created() {
+            console.log('Created About Component');
+        },
         destroyed() {
-            console.log("Destroyed");
+            console.log("Destroyed About Component");
+        },
+        //Dừng 1 lifecycle nhưng ko phải là xóa như destroyed, dữ liệu vẫn còn
+        deactivated() {
+            console.log("Deactivated About Component");
+        },
+        //Thông báo bắt đầu 1 lifecycle
+        activated() {
+            console.log("Activated About Component");
         },
     }
 </script>

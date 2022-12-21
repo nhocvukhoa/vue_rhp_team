@@ -6,7 +6,12 @@
 
 <script>
     export default {
-
+        deactivated() {
+            console.log("Deactivated Contact Component");
+        },
+        activated() {
+            console.log("Activated Contact Component");
+        },
     }
 </script>
 
