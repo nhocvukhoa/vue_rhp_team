@@ -21,8 +21,12 @@
         },
         methods: {
             createNewItem() {
-                this.$emit('itemAdded', this.item);
-                this.item = '';
+                if (this.item = '') {
+                    return false;
+                } else {
+                    this.$emit('itemAdded', this.item);
+                    this.item = '';
+                }
             }
         }
     }
