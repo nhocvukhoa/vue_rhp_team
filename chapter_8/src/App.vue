@@ -2,12 +2,14 @@
     <div class="container">
         <app-new-item @itemAdded="addItem"></app-new-item>
         <app-items-layout :items="items"></app-items-layout>
+        <app-infor></app-infor>
     </div>
 </template>
 
 <script>
     import ItemsLayout from './components/ItemsLayout.vue';
     import NewItem from './components/NewItem.vue';
+    import Infor from './components/Infor.vue';
 
     export default {
         data: function() {
@@ -21,7 +23,8 @@
         },
         components: {
             appItemsLayout: ItemsLayout,
-            appNewItem: NewItem
+            appNewItem: NewItem,
+            appInfor: Infor
         },
         methods: {
             addItem(item) {
