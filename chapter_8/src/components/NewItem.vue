@@ -21,7 +21,7 @@
         },
         methods: {
             createNewItem() {
-                if (this.item = '') {
+                if (this.item == '') {
                     return false;
                 } else {
                     this.$emit('itemAdded', this.item);
