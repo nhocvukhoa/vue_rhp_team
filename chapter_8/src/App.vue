@@ -1,11 +1,14 @@
 <template>
     <div class="container">
+        <app-new-item @itemAdded="addItem"></app-new-item>
         <app-items-layout :items="items"></app-items-layout>
     </div>
 </template>
 
 <script>
-    import ItemsLayout from './components/ItemsLayout.vue'
+    import ItemsLayout from './components/ItemsLayout.vue';
+    import NewItem from './components/NewItem.vue';
+
     export default {
         data: function() {
             return {
@@ -17,7 +20,13 @@
             }
         },
         components: {
-            appItemsLayout: ItemsLayout
+            appItemsLayout: ItemsLayout,
+            appNewItem: NewItem
+        },
+        methods: {
+            addItem(item) {
+                this.items.push(item);
+            }
         }
     }
 </script>
