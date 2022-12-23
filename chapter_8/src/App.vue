@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <app-new-item @itemAdded="addItem"></app-new-item>
-        <app-items-layout :items="items"></app-items-layout>
+        <app-items-layout :items="items" @itemRemoved="removeItem"></app-items-layout>
         <app-infor></app-infor>
     </div>
 </template>
@@ -29,6 +29,9 @@
         methods: {
             addItem(item) {
                 this.items.push(item);
+            },
+            removeItem(index) {
+                this.items.splice(index, 1);
             }
         }
     }

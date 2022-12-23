@@ -1,6 +1,7 @@
 <template>
    <div class="row">
-        <app-items v-for="item in items" v-bind:data="item" v-bind:key="item">{{ item }}</app-items>
+        <app-items v-for="(item, index) in items" v-bind:data="item" v-bind:key="item" 
+            @click.native="removeItem(index)">{{ item }}</app-items>
    </div>
 </template>
 
@@ -11,6 +12,11 @@
         props: ['items'],
         components: {
             'appItems': Items
+        },
+        methods: {
+            removeItem(index) {
+                this.$emit('itemRemoved', index);
+            }
         }
     }
 </script>
