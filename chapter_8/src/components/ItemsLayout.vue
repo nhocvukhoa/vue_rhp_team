@@ -1,6 +1,6 @@
 <template>
    <div class="row">
-        <app-items v-for="(item, index) in items" v-bind:data="item" v-bind:key="item" 
+        <app-items v-for="(item, index) in items" v-bind:data="item" v-bind:key="index" 
             @click.native="removeItem(index)">{{ item }}</app-items>
    </div>
 </template>

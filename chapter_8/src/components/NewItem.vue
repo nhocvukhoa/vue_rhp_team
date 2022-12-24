@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row mb-2">
         <form>
             <div class="col-sm-8 col-md-6 form-group">
                 <label for="">Nhập câu hỏi</label>
@@ -14,6 +14,7 @@
 
 <script>
     export default {
+        props: ['items'],
         data: function() {
             return {
                 item: ''
@@ -21,6 +22,12 @@
         },
         methods: {
             createNewItem() {
+               for (var i = 0; i < this.items.length; i++) {
+                    if (this.items[i].toLowerCase() === this.item.toLowerCase()) {
+                        return alert('Item name is already!');
+                    }
+                }
+
                 if (this.item == '') {
                     return false;
                 } else {
