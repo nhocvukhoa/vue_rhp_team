@@ -1,0 +1,26 @@
+<template>
+    <div class="row mt-4">
+        <app-items v-for="(item, index) in items" v-bind:data="item" 
+            v-bind:key="index" @click.native="removeItem">{{ item }}</app-items>
+    </div>
+</template>
+
+<script>
+    import Items from './Items.vue';
+
+    export default {
+        props: ['items'],
+        components: {
+            'appItems': Items,
+        },
+        methods: {
+            removeItem(index) {
+                this.$emit('itemRemoved', index);
+            }
+        }
+    }
+</script>
+
+<style>
+   
+</style>
