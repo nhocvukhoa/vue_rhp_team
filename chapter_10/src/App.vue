@@ -53,7 +53,7 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
                     <label for="priority">Priority</label>
                     <select id="priority" class="form-control">
-                        <option></option>
+                        <option v-for="item in priorities" v-bind:key="item" v-bind:selected="item == 'Low'">{{ item }}</option>
                     </select>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <p>Mail: {{ userData.email }}</p>
                         <p>Password: {{ userData.password }}</p>
                         <p>Age: {{ userData.age }}</p>
-                        <p style="white-space: pre">Message: {{ message }}</p>
+                        <p style="white-space: pre-line">Message: {{ message }}</p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
                             <li v-for="item in sendMail" v-bind:key="item">{{ item }}</li>
@@ -102,6 +102,7 @@
                 },
                 message: '',
                 sendMail: [],
+                priorities: ['High', 'Low'],
             }
        }
     }
