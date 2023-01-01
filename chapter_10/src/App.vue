@@ -40,6 +40,28 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <div class="form-group">
+                        <label for="registerGoogle">
+                            <input type="checkbox" id="registerGoogle" value="Register Google" v-model="registerType"> Register Google
+                        </label>
+                        <label for="registerFacebook">
+                            <input type="checkbox" id="registerFacebook" value="Register Facebook" v-model="registerType"> Register Facebook
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+                    <label for="html">
+                        <input type="radio" id="html" value="HTML" v-model="userData.languages"> HTML
+                    </label>
+                    <label for="css">
+                        <input type="radio" id="css" value="CSS" v-model="userData.languages"> CSS
+                    </label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
                     <label for="male">
                         <input type="radio" id="male" value="Male" v-model="userData.gender"> Male
@@ -52,8 +74,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
                     <label for="priority">Priority</label>
-                    <select id="priority" class="form-control">
-                        <option v-for="item in priorities" v-bind:key="item" v-bind:selected="item == 'Low'">{{ item }}</option>
+                    <select id="priority" class="form-control" v-model="selectedPriority">
+                        <option v-for="item in priorities" v-bind:key="item">{{ item }}</option>
                     </select>
                 </div>
             </div>
@@ -66,12 +88,12 @@
             <hr>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                    <button class="btn btn-primary">Submit!</button>
+                    <button class="btn btn-primary" @click.prevent="submited">Submit!</button>
                 </div>
             </div>
         </form>
         <hr>
-        <div class="row">
+        <div class="row" v-if="isSubmit">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -86,8 +108,13 @@
                         <ul>
                             <li v-for="item in sendMail" v-bind:key="item">{{ item }}</li>
                         </ul>
+                        <p><strong>Register type?</strong></p>
+                        <ul>
+                            <li v-for="item in registerType" v-bind:key="item">{{ item }}</li>
+                        </ul>
                         <p>Gender: {{ userData.gender }}</p>
-                        <p>Priority: </p>
+                        <p>Languages: {{ userData.languages }}</p>
+                        <p>Priority: {{ selectedPriority }}</p>
                         <p>Switched: {{ dataSwitch }}</p>
                     </div>
                 </div>
@@ -106,12 +133,21 @@
                     email: '',
                     password: '',
                     age: 0,
-                    gender: 'Male'
+                    gender: 'Male',
+                    languages: 'HTML'
                 },
                 message: '',
                 sendMail: [],
+                registerType: [],
                 priorities: ['High', 'Low'],
+                selectedPriority: 'Low',
                 dataSwitch: true,
+                isSubmit: false
+            }
+        },
+        methods: {
+            submited() {
+                this.isSubmit = true;
             }
         },
         components: {
