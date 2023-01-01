@@ -11,8 +11,8 @@
                         <p>{{ userData.email }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" v-model="userData.password">
+                        <label for="password">Password</label>  
+                        <input type="password" id="password" class="form-control" :value="userData.password" @input="userData.password = $event.target.value">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
@@ -57,6 +57,12 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+                    <label for="switched">Switched</label>
+                    <custom-control v-model="dataSwitch"></custom-control>
+                </div>
+            </div>
             <hr>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -81,8 +87,8 @@
                             <li v-for="item in sendMail" v-bind:key="item">{{ item }}</li>
                         </ul>
                         <p>Gender: {{ userData.gender }}</p>
-                        <p>Priority:</p>
-                        <p>Switched:</p>
+                        <p>Priority: </p>
+                        <p>Switched: {{ dataSwitch }}</p>
                     </div>
                 </div>
             </div>
@@ -91,8 +97,10 @@
 </template>
 
 <script>
+    import CustomControl from "./components/CustomControl.vue";
+
     export default {
-       data: function() {
+        data: function() {
             return {
                 userData: {
                     email: '',
@@ -103,8 +111,12 @@
                 message: '',
                 sendMail: [],
                 priorities: ['High', 'Low'],
+                dataSwitch: true,
             }
-       }
+        },
+        components: {
+            customControl: CustomControl
+        }
     }
 </script>
 
