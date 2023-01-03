@@ -11,8 +11,9 @@
         <div class="row">
             <div class="col-xs-12 col-md-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Custom Directives</h1>
-                <p v-global-highlight:background.delayed="'red'">Color style by directives global</p>
-                <p v-local-hightlight:background.delayed.blink="'green'">Color style by directives local</p>
+                <p v-global-highlight:background.delayed="'green'">Color style by directives global</p>
+                <p v-local-hightlight:background.delayed.blink="{mainColor: 'green', secondColor: 'blue', delay: 500}">
+                    Color style by directives local</p>
             </div>
         </div>
     </div>
@@ -30,8 +31,8 @@
                     }
 
                     if (binding.modifiers['blink']) {
-                        let mainColor = binding.value; //green
-                        let secondColor = 'blue'; //blue
+                        let mainColor = binding.value.mainColor; //green
+                        let secondColor = binding.value.secondColor; //blue
                         let currentColor = mainColor; //green
 
                         //Lặp lại 1 lần
@@ -45,7 +46,7 @@
                                 } else {
                                     el.style.color = currentColor;
                                 }
-                            }, 1000);
+                            }, binding.value.delay);
                         }, delay);
                     } else {
                         setTimeout(() => {
