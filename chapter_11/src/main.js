@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 //Đây là 1 directive ở dạng global
-Vue.directive('highlight', {
+Vue.directive('global-highlight', {
     //el: element node
     //binding: truy cập vào giá trị của directive
     bind(el, binding, vnode) {
