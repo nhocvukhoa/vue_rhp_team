@@ -11,5 +11,8 @@ export const productMixin = {
                 return element.match(this.filterProduct);
             });
         }
+    },
+    created() {
+        console.log('Created from mixin');
     }
 }

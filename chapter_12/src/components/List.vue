@@ -19,6 +19,9 @@
 
     export default {
        mixins: [productMixin],
+       created() {
+            console.log('Created from List.vue')
+       }
     }
 </script>
 

@@ -41,7 +41,10 @@
         components: {
             'appList': List,
         },
-        mixins: [productMixin]
+        mixins: [productMixin],
+        created() {
+            console.log('Created from App.vue');
+        }
     }
 </script>
 
