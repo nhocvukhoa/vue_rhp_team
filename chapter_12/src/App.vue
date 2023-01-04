@@ -19,16 +19,18 @@
                 </div>
             </div>
         </div>
+        <app-list></app-list>
     </div>
 </template>
 
 <script>
+    import { productMixin } from './mixins/productMixin.js';
+    import List from './components/List.vue';
+
     export default {
         data() {
             return {
                 text: 'Hello everyone, Vue Js',
-                products: ['Iphone', 'Samsung', 'Nokia', 'HTC'],
-                filterProduct: '',
             }
         },
         filters: {
@@ -36,13 +38,10 @@
                 return text.toLowerCase();
             }
         },
-        computed: {
-            filteredProduct() {
-                return this.products.filter((element) => {
-                    return element.match(this.filterProduct);
-                });
-            }
-        }
+        components: {
+            'appList': List,
+        },
+        mixins: [productMixin]
     }
 </script>
 
