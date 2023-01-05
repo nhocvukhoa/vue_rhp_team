@@ -16,3 +16,9 @@
 - Directive custom với modifiers(delayed, prevent, ...) ở global và local => Modifier ở dạng mảng
 - Sử dụng nhiều modifiers
 - Truyền nhiều dữ liệu phức tạp vào directive
+11. Chương 12
+- Tạo local, global filter: chuyển đổi từ trái sang phải cho đến filter phải cuối cùng (Vue 3 không còn filter)
+- Sử dụng filter và computed
+- Khái niệm và phạm vi Mixins (chia sẻ cho những thằng còn lại nhưng không nhận chia sẻ từ những thằng còn lại)
+- Tạo một mixin local, global cơ bản
+- Mixin là một component mở rộng
