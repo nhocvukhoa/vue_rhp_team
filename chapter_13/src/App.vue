@@ -11,6 +11,9 @@
                 <transition name="slide">
                     <div class="alert alert-warning mt-md-3" v-if="show">This is something about notification</div>
                 </transition>
+                <transition name="slide" appear>
+                    <div class="alert alert-danger mt-md-3" v-if="show">This is something about notification</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -20,7 +23,7 @@
     export default {
         data() {
             return {
-                show: false,
+                show: true,
             }
         }
     }
