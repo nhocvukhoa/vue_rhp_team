@@ -11,8 +11,12 @@
                 <transition name="slide">
                     <div class="alert alert-warning mt-md-3" v-if="show">This is something about notification</div>
                 </transition>
-                <transition name="slide" appear>
-                    <div class="alert alert-danger mt-md-3" v-if="show">This is something about notification</div>
+                <transition appear
+                    enter-class=""
+                    enter-active-enter="animated bounceOutDown"
+                    leave-class=""
+                    leave-active-class="animated hinge">
+                        <div class="alert alert-danger mt-md-3" v-if="show">This is something about notification</div>
                 </transition>
             </div>
         </div>
