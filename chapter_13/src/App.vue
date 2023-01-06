@@ -22,6 +22,15 @@
                     leave-active-class="animated hinge">
                         <div class="alert alert-danger mt-md-3" v-if="show">This is something about notification</div>
                 </transition>
+                <!-- out-in giúp chuyển động chậm hơn -->
+                <transition v-bind:name="typeAnimation" mode="out-in">
+                    <div class="alert alert-success mt-md-3" v-if="show" key="success">
+                        This is something about notification from success
+                    </div>
+                    <div class="alert alert-danger mt-md-3" v-else key="danger">
+                        This is something about notification from danger
+                    </div>
+                </transition>
             </div>
         </div>
     </div>
