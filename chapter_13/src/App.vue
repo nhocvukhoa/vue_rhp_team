@@ -4,8 +4,12 @@
             <div class="col-xs-12 col-md-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center">
                 <h1>Animations</h1>
                 <hr>
+                <select class="form-control mb-md-3" v-model="typeAnimation">
+                    <option value="fade">Fade</option>
+                    <option value="slide">Slide</option>
+                </select>
                 <button class="btn btn-block btn-success" @click="show =! show">Show notification</button>
-                <transition name="fade">
+                <transition v-bind:name="typeAnimation">
                     <div class="alert alert-success mt-md-3" v-if="show">This is something about notification</div>
                 </transition>
                 <transition name="slide">
@@ -28,6 +32,7 @@
         data() {
             return {
                 show: true,
+                typeAnimation: 'fade',
             }
         }
     }
