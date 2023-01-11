@@ -27,7 +27,14 @@
                 }
         },
         methods: {
-            
+            submit() {
+                this.$http.post('https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json', this.user)
+                    .then(response => {
+                        console.log(response)
+                    }, error => {
+                        console.log(error);
+                    });
+            }    
         }
     }
 </script>
