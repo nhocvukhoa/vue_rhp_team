@@ -22,3 +22,11 @@
 - Khái niệm và phạm vi Mixins (chia sẻ cho những thằng còn lại nhưng không nhận chia sẻ từ những thằng còn lại)
 - Tạo một mixin local, global cơ bản
 - Mixin là một component mở rộng
+12. Chương 13
+- Hai quá trình của transition: enter và leave
+- Thử hiệu ứng fade animation
+- Sử dụng appear để cho một đối tượng xuất hiện ngay từ đầu và có hiệu ứng của khối enter
+- Sử dụng nhiều class khác nhau bằng thư viện animate.css
+- Sử dụng select option với transition, animate
+- Transition giữa các element: sử dụng key và mode="out-in" cho các chuyển động
+- Javascript animation
