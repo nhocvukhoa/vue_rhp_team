@@ -44,6 +44,26 @@
                     @leave-cancelled="leaveCancelled">
                         <div style="width: 200px; height: 200px; background: lightblue" v-if="status"></div>
                 </transition>
+                <hr>
+                <!-- <button class="btn btn-block btn-warning mb-md-3"
+                    @click="addItem">Add item</button>
+                <ul class="list-group">
+                    <li class="list-group-item" 
+                        v-for="(number, index) in numbers"
+                        v-bind:key="number"
+                        @click="removeItem(index)">{{ number }}</li>
+                </ul>
+                <hr> -->
+                <button class="btn btn-block btn-warning mb-md-3"
+                    @click="addItem">Add item version transition-group</button>
+                <ul class="list-group">
+                    <transition-group name="slide">
+                        <li class="list-group-item" 
+                            v-for="(number, index) in numbers"
+                            v-bind:key="number"
+                            @click="removeItem(index)">{{ number }}</li>
+                    </transition-group>
+                </ul>
             </div>
         </div>
     </div>
@@ -56,6 +76,7 @@
                 show: true,
                 typeAnimation: 'fade',
                 status: false,
+                numbers: [1, 2, 3, 4, 5, 6],
             }
         },
         methods: {
@@ -84,12 +105,26 @@
             },
             leaveCancelled(el) {
                 console.log('leaveCancelled');
+            },
+            addItem() {
+                const position = Math.floor(Math.random() * this.numbers.length);
+                
+                //this.numbers.push(position);
+                this.numbers.splice(position, 0, this.numbers.length + 1);
+            },
+            removeItem(index) {
+                this.numbers.splice(index, 1);
+                console.log(this.numbers);
             }
         }
     }
 </script>
 
-<style>
+<style scope>
+    .list-group-item {
+        cursor: pointer;
+    }
+
     .fade-enter {
         opacity: 0;
     }
@@ -113,8 +148,8 @@
     }
 
     .slide-enter-active {
-        transition: opacity .5s;
-        animation: slide-in .5s ease-out forwards;
+        transition: opacity 1s;
+        animation: slide-in 1s ease-out forwards;
     }
 
     .slide-leave {
@@ -122,8 +157,14 @@
     }
 
     .slide-leave-active {
-        transition: opacity .5s;
-        animation: slide-out .5s ease-out forwards;
+        opacity: 0;
+        transition: opacity 1s;
+        animation: slide-out 1s ease-out forwards;
+        position: absolute;
+    }
+
+    .slide-move {
+        transition: transform 1s;
     }
 
     @keyframes slide-in {
