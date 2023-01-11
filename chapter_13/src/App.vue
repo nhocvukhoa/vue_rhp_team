@@ -31,6 +31,19 @@
                         This is something about notification from danger
                     </div>
                 </transition>
+                <hr>
+                <button class="btn btn-success mb-md-3" @click="status =! status">Add or Remove</button>
+                <transition @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @enter-cancelled="enterCancelled"
+
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    @leave-cancelled="leaveCancelled">
+                        <div style="width: 200px; height: 200px; background: lightblue" v-if="status"></div>
+                </transition>
             </div>
         </div>
     </div>
@@ -42,6 +55,35 @@
             return {
                 show: true,
                 typeAnimation: 'fade',
+                status: false,
+            }
+        },
+        methods: {
+            beforeEnter(el) {
+                console.log("beforeEnter");
+            },
+            enter(el, done) {
+                console.log("enter");
+                done();
+            },
+            afterEnter(el) {
+                console.log('afterEnter');
+            },
+            enterCancelled(el) {
+                console.log('enterCancelled');//Không làm gì nên ko có
+            },
+            beforeLeave(el) {
+                console.log("beforeLeave");
+            },
+            leave(el, done) {
+                console.log('leave');
+                done();
+            },
+            afterLeave(el) {
+                console.log('afterLeave');
+            },
+            leaveCancelled(el) {
+                console.log('leaveCancelled');
             }
         }
     }
