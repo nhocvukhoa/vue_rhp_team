@@ -37,7 +37,7 @@
         },
         methods: {
             submit() {
-                this.$http.post('https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json', this.user)
+                this.$http.post('', this.user)
                     .then(response => {
                         console.log(response)
                     }, error => {
@@ -45,7 +45,7 @@
                     });
             }    ,
             getAllUser() {
-                this.$http.get('https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json')
+                this.$http.get('')
                     .then(response => {
                         //console.log(response);
                         return response.json();
