@@ -11,6 +11,14 @@
                     <input class="form-control" type="text" v-model="user.email">
                 </div>
                 <button class="btn btn-block btn-success" type="submit" @click="submit">Submit</button>
+                <br>
+                <button class="btn btn-block btn-primary" @click="getAllUser">Get all user</button>
+                <br>
+                <ul class="list-group">
+                    <li class="list-group-item"
+                        v-for="user in users"
+                        :key="user">{{ user.userName}} - {{ user.email }}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -19,12 +27,13 @@
 <script>
     export default {
         data() {
-                return {
-                    user: {
-                        userName: '',
-                        email: ''
-                    }
-                }
+            return {
+                user: {
+                    userName: '',
+                    email: ''
+                },
+                users: []
+            }
         },
         methods: {
             submit() {
@@ -34,7 +43,23 @@
                     }, error => {
                         console.log(error);
                     });
-            }    
+            }    ,
+            getAllUser() {
+                this.$http.get('https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json')
+                    .then(response => {
+                        //console.log(response);
+                        return response.json();
+                    })
+                    .then(data => {
+                        const newArr = [];
+
+                        for (let key in data) {
+                            newArr.push(data[key]);
+                        }
+
+                        this.users = newArr;
+                    });
+            }
         }
     }
 </script>
