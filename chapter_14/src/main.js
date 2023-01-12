@@ -7,13 +7,17 @@ Vue.use(VueResource);
 Vue.http.options.root = 'https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json';
 
 Vue.http.interceptors.push((request, next) => {
-    console.log(request);
-
     if (request.method == 'POST') {
         request.method = 'PUT';
     }
 
-    next();
+    next(response => {
+        response.json = () => {
+            return {
+                message:response.body
+            }
+        }
+    });
 });
 
 new Vue({
