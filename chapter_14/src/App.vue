@@ -32,18 +32,26 @@
                     userName: '',
                     email: ''
                 },
-                users: []
+                users: [],
+                resource: {}
             }
         },
         methods: {
             submit() {
-                this.$http.post('', this.user)
-                    .then(response => {
-                        console.log(response)
-                    }, error => {
-                        console.log(error);
-                    });
-            }    ,
+                //C1:
+                // this.$http.post('', this.user)
+                //     .then(response => {
+                //         console.log(response)
+                //     }, error => {
+                //         console.log(error);
+                //     });
+
+                //C2:
+                //this.resource.save({}, this.user)
+
+                //C3:
+                this.resource.createItem(this.user);
+            },
             getAllUser() {
                 this.$http.get('')
                     .then(response => {
@@ -59,7 +67,17 @@
 
                         this.users = newArr;
                     });
+            },
+        },
+        created() {
+            const customActions= {
+                createItem: {
+                    method: 'POST',
+                    url: 'user.json'
+                }
             }
+
+            this.resource = this.$resource('data.json', {}, customActions);
         }
     }
 </script>

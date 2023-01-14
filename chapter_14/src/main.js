@@ -4,7 +4,7 @@ import App from './App.vue'
 
 Vue.use(VueResource);
 
-Vue.http.options.root = 'https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/data.json';
+Vue.http.options.root = 'https://vue-rhp-form-ff662-default-rtdb.firebaseio.com/';
 
 Vue.http.interceptors.push((request, next) => {
     if (request.method == 'POST') {
