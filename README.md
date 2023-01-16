@@ -30,3 +30,9 @@
 - Sử dụng select option với transition, animate
 - Transition giữa các element: sử dụng key và mode="out-in" cho các chuyển động
 - Javascript animation
+13. Chương 14
+- Tìm hiểu cơ bản về Firebase
+- $GET và $POST dữ liệu firebase
+- Setup global vue resource (config link project)
+- Interceptor with request, response (Firebase)
+- Tùy biến vue resource
