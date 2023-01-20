@@ -2,6 +2,10 @@
     <div>
         <h1>User Detail</h1>
         <p>ID User: {{ id }}</p>
+        <hr>
+        <router-link tag="button"
+            class="btn btn-warning"
+            :to="'/user/' + $route.params.id + '/edit'">Edit user</router-link>
     </div>
 </template>
 
