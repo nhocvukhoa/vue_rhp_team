@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>UserDetail</h1>
+        <h1>User Detail</h1>
         <p>ID User: {{ id }}</p>
     </div>
 </template>

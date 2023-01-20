@@ -16,13 +16,8 @@
                     <router-link
                         tag="li"
                         class="nav-item"
-                        to="/user/1"
+                        to="/user"
                         active-class="active"><a class="nav-link">User</a></router-link>
-                    <router-link
-                        tag="li"
-                        class="nav-item"
-                        to="/user/100"
-                        active-class="active"><a class="nav-link">Admin</a></router-link>
                 </ul>
             </div>
         </nav>

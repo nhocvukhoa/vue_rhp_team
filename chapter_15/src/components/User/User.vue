@@ -5,6 +5,7 @@
         <button class="btn btn-success" @click="backHome">Go to home</button>
         <button class="btn btn-danger" @click="goAdminDetail">Go to Admin profile</button>
         <button class="btn btn-danger" @click="goUserDetail">Go to Admin profile</button>
+        <router-view></router-view>
     </div>
 </template>
 
