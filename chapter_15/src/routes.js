@@ -5,10 +5,10 @@ import UserDetail from './components/User/UserDetail'
 import UserEdit from './components/User/UserEdit'
 
 export const routes = [
-    { path: '/', name: 'homePage', component: Home },
-    { path: '/user', name: 'userPage', component: User, children: [
-        { path: '', name: 'index', component: UserStart },
-        { path: ':id', name: 'userDetail', component: UserDetail },
-        { path: ':id/edit', name: 'userEdit', component: UserEdit },
+    { path: '/', name: 'home_page', component: Home },
+    { path: '/user', name: 'user_page', component: User, children: [
+        { path: '', name: 'user_index', component: UserStart },
+        { path: ':id', name: 'user_detail', component: UserDetail },
+        { path: ':id/edit', name: 'user_edit', component: UserEdit },
     ] },
 ]

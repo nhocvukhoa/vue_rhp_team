@@ -5,7 +5,7 @@
         <hr>
         <router-link tag="button"
             class="btn btn-warning"
-            :to="'/user/' + $route.params.id + '/edit'">Edit user</router-link>
+            :to="{ name: 'user_edit', params: { id: $route.params.id } }">Edit user</router-link>
     </div>
 </template>
 
