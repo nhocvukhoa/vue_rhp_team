@@ -1,4 +1,5 @@
 import Home from './components/Home'
+import Error from './components/404'
 import PageHeader from './components/layouts/Header.vue'
 import User from './components/User/User'
 import UserStart from './components/User/Index'
@@ -15,5 +16,8 @@ export const routes = [
         { path: ':id', name: 'user_detail', component: UserDetail },
         { path: ':id/edit', name: 'user_edit', component: UserEdit },
     ] },
-    { path: '/auth-redirect', redirect: { name: 'home_page' }}
+    { path: '/auth-redirect', redirect: { name: 'home_page' }},
+    //Tất cả những link ko đúng đều sẽ chuyển về trang 404
+    { path: '/404', name: 'error_page', component: Error },
+    { path: '*', redirect: '/404' }
 ]
