@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header-page></header-page>
+        <router-view name="page-header"></router-view>
         <div class="container">
             <router-view></router-view>
         </div>
@@ -8,8 +8,6 @@
 </template>
 
 <script>
-    import Header from './components/layouts/Header.vue'
-
     export default {
         data() {
             return {
@@ -19,9 +17,6 @@
         methods: {
             
         },
-        components: {
-            'headerPage': Header
-        }
     }
 </script>
 
