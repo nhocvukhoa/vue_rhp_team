@@ -31,8 +31,27 @@
 - Transition giữa các element: sử dụng key và mode="out-in" cho các chuyển động
 - Javascript animation
 13. Chương 14
+- Cài đặt vue resource
 - Tìm hiểu cơ bản về Firebase
 - $GET và $POST dữ liệu firebase
 - Setup global vue resource (config link project)
 - Interceptor with request, response (Firebase)
 - Tùy biến vue resource
+14. Chương 15
+- Cài đặt vue router  
+- Thiết lập route cơ bản
+- Route mode và chế độ history cần thiết
+- router-link xây dựng thanh menu đơn giản
+- Thêm class active khi route hoạt động
+- Sử dụng button để chuyển trang
+- Truyền param vào trong route
+- Lấy param từ trên route xuống
+- Theo dõi sự thay đổi của params trên routes
+- Điều hướng route con
+- Sử dụng route name cho linh hoạt thay vì sử dụng path
+- Sử dụng route query, multi + transition router-view
+- Redirect tới một trang khác
+- Xử lý lỗi khi route thất bại
+- Kết hợp hash fragment với scrollbehavior
+- Guard trong Vue
+- Lazy load để tối ưu thời gian load của route
