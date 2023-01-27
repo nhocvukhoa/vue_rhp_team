@@ -1,10 +1,30 @@
 import Home from './components/Home'
 import Error from './components/404'
 import PageHeader from './components/layouts/Header.vue'
-import User from './components/User/User'
-import UserStart from './components/User/Index'
-import UserDetail from './components/User/UserDetail'
-import UserEdit from './components/User/UserEdit'
+
+const User = resolve => {
+    require.ensure(['./components/User/User'], () => {
+        resolve(require('./components/User/User'))
+    }, 'user');
+}
+
+const UserStart = resolve => {
+    require.ensure(['./components/User/Index'], () => {
+        resolve(require('./components/User/Index'))
+    }, 'user');
+}
+
+const UserDetail = resolve => {
+    require.ensure(['./components/User/UserDetail'], () => {
+        resolve(require('./components/User/UserDetail'))
+    }, 'user');
+}
+
+const UserEdit = resolve => {
+    require.ensure(['./components/User/UserEdit'], () => {
+        resolve(require('./components/User/UserEdit'))
+    }, 'user');
+}
 
 export const routes = [
     { path: '/', name: 'home_page', components: {
