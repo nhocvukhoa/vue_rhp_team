@@ -31,6 +31,13 @@
             '$route'(to, from) {
                 this.id = to.params.id;
             }
+        },
+        beforeRouteEnter (to, from, next) {
+            if (true) {
+                next();
+            } else {
+                next(false);
+            }
         }
     }
 </script>
