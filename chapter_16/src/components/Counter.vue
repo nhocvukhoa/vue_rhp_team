@@ -7,17 +7,12 @@
 
 <script>
     export default {
-        data () {
-            return {
-
-            }
-        },
         methods: {
             increment () {
-                this.$emit('updated', 1);
+                this.$store.state.result++;
             },
             decrement () {
-                this.$emit('updated', -1);
+               this.$store.state.result--;
             }
         }
     }
