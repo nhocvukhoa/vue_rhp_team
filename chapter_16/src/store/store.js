@@ -7,4 +7,13 @@ export const store = new Vuex.Store({
     state: {
         result: 0
     },
+    //Tạo ra những chiếc xe
+    getters: {
+        tenResult: state => {
+            return state.result * 10;
+        },
+        nameResult: state => {
+            return state.result + ' name product';
+        }
+    }
 });
