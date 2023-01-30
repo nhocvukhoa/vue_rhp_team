@@ -18,11 +18,21 @@ export const store = new Vuex.Store({
     },
     //Tạo ra những giải pháp nếu khách yêu cầu
     mutations: {
-        incrementOption(state, n) {
-            state.result += n;
+        increment(state) {
+            state.result++;
         },
         decrement(state) {
             state.result--;
+        }
+    },
+    actions: {
+        increment: ({ commit }) => {
+            commit('increment')
+        },
+        asyncDecrement: ({ commit }) => {
+            setTimeout(() => {
+                commit('decrement');
+            }, 2000);
         }
     }
 });
