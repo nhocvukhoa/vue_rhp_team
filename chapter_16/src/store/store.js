@@ -15,5 +15,14 @@ export const store = new Vuex.Store({
         nameResult: state => {
             return state.result + ' name product';
         }
+    },
+    //Tạo ra những giải pháp nếu khách yêu cầu
+    mutations: {
+        incrementOption(state, n) {
+            state.result += n;
+        },
+        decrement(state) {
+            state.result--;
+        }
     }
 });

@@ -5,7 +5,7 @@
         <app-result></app-result>
         <hr>
         <app-other></app-other>
-        <br>
+        <hr>
         <app-counter></app-counter>
     </div>
 </template>

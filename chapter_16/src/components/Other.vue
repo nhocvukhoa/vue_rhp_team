@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p>This is result: {{ tenResult }}</p>
-        <p>This is name result: {{ nameResult }}</p>
+        <p>This is result other: {{ tenResult }}</p>
+        <p>This is name result other: {{ nameResult }}</p>
     </div>
 </template>
 
