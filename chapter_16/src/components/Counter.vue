@@ -42,7 +42,7 @@
             //    this.$store.state.result--;
             // }
             ...mapActions(['increment', 'asyncDecrement']),
-            //Cách 1
+            //Cách 1: v-model
             // updateValue(event) {
             //     //dispath để kích hoạt action đã gọi trong store
             //     return this.$store.dispatch('updateValue', event.target.value);
