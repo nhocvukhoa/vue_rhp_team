@@ -55,3 +55,10 @@
 - Kết hợp hash fragment với scrollbehavior
 - Guard trong Vue
 - Lazy load để tối ưu thời gian load của route
+15. Chương 16
+- Cài đặt vuex
+- Sử dụng vuex giải quyết bài toán tăng giảm số lượng thay vì sử dụng emit, prop
+- Chú ý về central state
+- Lấy dữ liệu bằng gettters và sử dụng mapGetters, mutations và mapMutations, actions và mapActions
+- Sử dụng v-model trong vuex
+- Phân chia cấu trúc qua modules
